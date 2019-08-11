@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//set<int, greater<int>> sorts the
+//unordered_set<int>: The edge search operation can be further optimized to O(1) using
+//                    unordered_set which uses hashing internally.
 //Adjacency List in a descending order.
 
 //set::begin(): Returns an iterator referring to the first element in the set container.
@@ -11,12 +12,12 @@ using namespace std;
 
 struct Graph{
   int V;
-  set<int, greater<int>> * adjList;
+  unordered_set<int> * adjList;
 };
 Graph * createGraph(int V){
   Graph * graph = new Graph;
   graph->V = V;
-  graph->adjList = new set<int, greater<int>>[V];
+  graph->adjList = new unordered_set<int>[V];
   return graph;
 }
 
@@ -37,7 +38,7 @@ void addEdge(Graph * graph, int src, int dest){
 
 void printGraph(Graph * graph){
   for(int i=0; i < graph->V; ++i){
-    set<int, greater<int>> lst = graph->adjList[i];
+    unordered_set<int> lst = graph->adjList[i];
     cout<<endl<<"Adjacency list of Vertex "<<i<<":";
     for(auto itr=lst.begin(); itr != lst.end(); ++itr)
       cout<<*itr<<" ";
@@ -76,9 +77,10 @@ int main(){
 
 /*
 Pros:
-Queries like whether there is an edge from vertex u to vertex v can be done in O(log V).
+Queries like whether there is an edge from vertex u to vertex v can be done in O(1).
+Adding an edge takes O(1).
 
 Cons:
-Adding an edge takes O(log V), as opposed to O(1) in vector implementation.
 Graphs containing parallel edge(s) cannot be implemented through this method.
+Edges are not stored in any order.
 */
