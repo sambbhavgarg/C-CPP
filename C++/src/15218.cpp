@@ -1,7 +1,7 @@
 #include<stdio.h>
 using namespace std;
 class parent{
-    string profession;
+  string profession;
   protected:
     int id;
   public:
@@ -25,7 +25,7 @@ class parent{
     }
 };
 class child1 : public parent{
-  void 
+  void
   void ranker(){cout<<rank; }
 };
 class child2 : protected parent{
