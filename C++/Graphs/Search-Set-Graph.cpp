@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 //set<int, greater<int>> sorts the
 //Adjacency List in a descending order.
 
@@ -5,8 +8,6 @@
 // set::end(): Returns an iterator referring to the past-the-end element in the set container.
 
 // auto keyword helps in iterating through containers, sets here -> for(auto itr : 'set-name') cout<<itr;
-#include <bits/stdc++.h>
-using namespace std;
 
 struct Graph{
   int V;
@@ -22,6 +23,15 @@ Graph * createGraph(int V){
 void addEdge(Graph * graph, int src, int dest){
   graph->adjList[src].insert(dest);
   graph->adjList[dest].insert(src);
+  /* to print the sources and destinations with every edge that's added*/
+  // for(auto itr: graph->adjList[i])
+  //   cout<<itr<<" ";
+  // cout<<endl;
+  //
+  // for(auto itr: graph->adjList[i])
+  //   cout<<itr<<" ";
+  // cout<<endl;
+
 }
 
 void printGraph(Graph * graph){
@@ -54,11 +64,11 @@ int main(){
   addEdge(graph, 2, 3);
   addEdge(graph, 3, 4);
 
-  printGraph(graph);
-
-  searchEdge(graph, 3,2);
-  searchEdge(graph, 4,1);
-  searchEdge(graph, 2,4);
-  searchEdge(graph, 2,4);
+  // printGraph(graph);
+  //
+  // searchEdge(graph, 3,2);
+  // searchEdge(graph, 4,1);
+  // searchEdge(graph, 2,4);
+  // searchEdge(graph, 2,4);
 
 }
