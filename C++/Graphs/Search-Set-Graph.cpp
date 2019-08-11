@@ -1,3 +1,10 @@
+//set<int, greater<int>> sorts the
+//Adjacency List in a descending order.
+
+// set::begin(): Returns an iterator referring to the first element in the set container.
+// set::end(): Returns an iterator referring to the past-the-end element in the set container.
+
+// auto keyword helps in iterating through containers, sets here -> for(auto itr : 'set-name') cout<<itr;
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -19,7 +26,7 @@ void addEdge(Graph * graph, int src, int dest){
 
 void printGraph(Graph * graph){
   for(int i=0; i < graph->V; ++i){
-    set<int, greater<int> > lst = graph->adjList[i];
+    set<int, greater<int>> lst = graph->adjList[i];
     cout<<endl<<"Adjacency list of Vertex "<<i<<":";
     for(auto itr=lst.begin(); itr != lst.end(); ++itr)
       cout<<*itr<<" ";
@@ -53,7 +60,5 @@ int main(){
   searchEdge(graph, 4,1);
   searchEdge(graph, 2,4);
   searchEdge(graph, 2,4);
-  
-
 
 }
