@@ -1,0 +1,29 @@
+#include<stdio.h>
+struct croom
+{
+char dept[20];
+int cap,rno,bno;
+};
+int main()
+{
+ int i,max=0;
+ struct croom c[5];
+ for(i=0;i<5;i++)
+ {
+  printf("enter dept, capacity, room no., and bno for 5 classes.");
+  scanf("%s %d %d %d",c[i].dept,&c[i].cap,&c[i].rno,&c[i].bno);
+ }
+ for(i=0;i<5;i++)
+ {
+  if(c[i].cap>max)
+   max=c[i].cap;
+ }
+ for(i=0;i<5;i++)
+ {
+ while(c[i].cap==max)
+ {
+ printf("details of class with maximum capacity is-");
+ printf("Dept: %s\ncapacity: %d\nroom number: %d\nblock number: %d\n",c[i].dept,c[i].cap,c[i].rno,c[i].bno);
+ }
+ 
+}

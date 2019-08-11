@@ -1,0 +1,26 @@
+stuct node
+{
+ int data;
+ struct node *nxt;
+ struct node *prv;
+};
+void insertmid()
+{ 
+ struct node *temp;
+ while(temp->data!=20)
+ {
+  temp=temp->nxt;
+ }
+ new->nxt=temp->nxt;
+ new->prv=temp;
+ temp->nxt=new;
+ new->nxt->prv=new
+}
+void del()//
+{
+ temp->prv->nxt=temp->next;
+ temp->next->prv=temp->prv;
+ free(temp);
+}
+int main()
+{}

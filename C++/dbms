@@ -1,0 +1,80 @@
+
+SQL>  create table Ecommerce(client_no integer(6),
+  2   Name varchar(20),
+  3    Purchase varchar(10));
+
+Table created.
+
+SQL> DESC SALES_MASTER
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CLIENT_NO                                           INTEGER(6)
+ NAME                                                VARCHAR2(20)
+ PURCHASE                                            VARCHAR2(10)
+
+
+SQL> INSERT INTO ecommerce VALUES(1,'xyz','toy’);
+
+1 row created.
+
+SQL>  INSERT INTO Ecommerce VALUES(2,'abc','ball');
+
+1 row created.
+
+SQL>  INSERT INTO Ecommerce VALUES(3,'mno','bat');
+
+1 row created.
+
+SQL>  INSERT INTO Ecommerce VALUES(4,'lmn','pen');
+
+1 row created.
+
+SQL>  INSERT INTO Ecommerce VALUES(5,'pqr','lamborghini');
+
+1 row created.
+
+
+SQL> CREATE TABLE MyStore(NAME VARCHAR(10),ID INTEGER(10),ACCOUNTANT VARCHAR(10));
+
+Table created.
+
+SQL>   INSERT INTO MyStore VALUES('RAJU',21763,'RAVI');
+
+1 row created.
+
+SQL>   INSERT INTO MyStore VALUES('AMAN',74536,'ANJALI');
+
+1 row created.
+
+SQL>   INSERT INTO MyStore VALUES('MRIDUL',46312,'SAMARTH');
+
+1 row created.
+
+SQL> SELECT * FROM MyStore;
+
+NAME             ID   ACCOUNTANT
+---------- ---------- ----------
+RAJU           21763  RAVI
+AMAN           174536 ANJALI
+MRIDUL         46312  SAMARTH
+
+SQL> SELECT * FROM MyStore
+  2  WHERE MOD(ID,2)=0;
+
+NAME             ID   ACCOUNTANT
+---------- ---------- ----------
+AMAN           174536  ANJALI
+CAKES          46312   SAMARTH
+
+SQL> UPDATE MyStore
+  2  SET ID=BALDUE/2;
+
+3 rows updated.
+
+SQL> SELECT * FROM MyStore;
+
+NAME             COST SALESMAN
+---------- ---------- ----------
+CHOCOLATE      10881  RAVI
+NOODLES        87268  ANJALI
+CAKES          23156 SAMARTH

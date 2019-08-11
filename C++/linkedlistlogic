@@ -1,0 +1,34 @@
+//insertion and deletion of elements in an array is v costly.
+
+/*
+sequence of data structures which are connected togethor via links
+ collection of nodes connected by link is linked list
+ types of link lists:
+  1.singly
+  2. doubly
+  3. circular
+typedef struct node sn;
+sn
+{
+ int data
+ sn *nxt;
+};
+sn *top=NULL;
+int main()
+{
+ sn *new;
+ new=(sn)malloc(sizeof(sn));
+ new->data=25;
+ new->nxt=NULL;
+ sn q;
+ top=new;//
+ //or now i can write head->nxt=NULL;
+ //insertion is before after or in between
+ //this program is for inserting before
+ q.data=35;
+ q.nxt=&p;
+ top=&q;
+ sn *temp;
+ temp=head;
+ //never move top in a singly linked list without saving its adress
+ }

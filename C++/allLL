@@ -1,0 +1,165 @@
+#include<stdio.h>
+
+struct singly
+{
+ int data;
+ struct singly *nxt;
+};
+
+struct singly *head=NULL
+
+void insertbegs()
+{
+ int a;
+ struct singly *new;
+ new=(struct singly *)malloc(sizeof(struct singly));//why use malloc
+ printf("enter data: ");
+ scanf("%d",&a);
+ new->data=a;
+ if(head==NULL)
+ {
+  head=new;
+  new->nxt=NULL;
+ }
+ else
+ {
+  new->nxt=head;
+  head=new;
+ }
+}
+void insertends()
+{
+ int a;
+ struct singly *new;
+ new=(struct singly *)malloc(sizeof(struct singly));
+ printf("enter data: ");
+ scanf("%d",&a);
+ new->data=a;
+ if(head==NULL)
+ {
+  head=new;
+  new->nxt=NULL;
+ }
+ else
+ {
+ struct singly *temp=head;
+ while(temp->next->next!=NULL)
+ {
+  temp=temp->next;
+ }
+ temp->next->next=new;
+ new->next= NULL;
+ }
+}
+void displays()
+{
+ struct singly *temp=head;
+ while(temp!=NULL)
+ {
+  printf("%d\n",temp->data);
+  temp=temp->nxt;
+ }
+}
+void insertafts()
+{
+    int a,aft;
+    struct singly *new;
+    new=(struct singly *)malloc(sizeof(struct singly));
+    printf("enter data: ");
+    print("enter input position: ");
+    scanf("%d%d",&a,&aft);
+    if (head==NULL)
+    printf("Cannot enter data!");
+    else
+    {
+
+    }
+
+}
+void delbegs()
+void delends()
+void delspecs()
+void searchs()
+void disps()
+void insertbegd()
+void insertendd()
+void insertaftd()
+void delbegd()
+void delendd()
+void searchd()
+void dispd()
+void insertbegc()
+void insertendc()
+void insertaftc()
+void delbegc()
+void delendc()
+void delspecc()
+void searchc()
+void dispc()
+int main()
+{
+    int ext,intern;
+    do
+    {
+      printf("1. Singly Linked List\n2.Doubly Linked List\n3.Circular Linked List\n4.Exit\n");
+      scanf("%d",&ext);
+      switch(ext)
+      {
+          case 1:do
+                {
+                  printf("1. Insert(Beginning), 2.Insert(End), 3. Insert(After an element), 4. Delete(Beginning), 5.Delete(End), 6. Delete(Specific), 7. Search, 8. Display, 9. EXIT")
+                  scanf("%d",&intern);
+                  switch(intern)
+                 {
+                     case 1: insertbegs();break;
+                     case 2: insertends();break;
+                     case 3: insertafts();break;
+                     case 4: delbegs();   break;
+                     case 5: delends();   break;
+                     case 6: delspecs();  break;
+                     case 7: searchs();   break;
+                     case 8: displays();  break;
+                 }
+
+                }while(intern!=9);
+
+            case 2:do
+                {
+                  printf("1. Insert(Beginning), 2.Insert(End), 3. Insert(After an element), 4. Delete(Beginning), 5.Delete(End), 6. Delete(Specific), 7. Search, 8. Display, 9. EXIT")
+                  scanf("%d",&intern);
+                  switch(intern)
+                 {
+                     case 1: insertbegd();break;
+                     case 2: insertendd();break;
+                     case 3: insertaftd();break;
+                     case 4: delbegd();   break;
+                     case 5: delendd();   break;
+                     case 6: delspecd();  break;
+                     case 7: searchd();   break;
+                     case 8: displayd();  break;
+                 }
+
+                }while(intern!=9);
+            case 3:do
+                {
+                  printf("1. Insert(Beginning), 2.Insert(End), 3. Insert(After an element), 4. Delete(Beginning), 5.Delete(End), 6. Delete(Specific), 7. Search, 8. Display, 9. EXIT")
+                  scanf("%d",&intern);
+                  switch(intern)
+                 {
+                     case 1: insertbegc();break;
+                     case 2: insertendc();break;
+                     case 3: insertaftc();break;
+                     case 4: delbegc();   break;
+                     case 5: delendc();   break;
+                     case 6: delspecc();  break;
+                     case 7: searchc();   break;
+                     case 8: displayc();  break;
+                 }
+
+                }while(intern!=9);
+      }
+    }while(ext!=4);
+
+
+
+}

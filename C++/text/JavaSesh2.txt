@@ -1,0 +1,86 @@
+
+->daemon threads--garbage collector
+
+->encapsulation: wrapping up of data
+->abstraction
+
+eg:
+class xyz
+{
+public static long main(String []args)//runtime error main doesnt return shit [] na hona jdk pe depend karta hai
+{
+SOP(hello);
+}
+}
+->no call by reference in java
+->which method to call in parametrized constructor, is bound at compile time. (early binding)
+->no float anywhere. double is always typecasted.
+->0.00==-0.00 is true because UNICODE is used.
+->initializer block is executed before constructor
+->no operator overloading in java, user defined nahi hoti, but plus operator overloaded hota hai internally
+->class names convenionally start with capitals
+->method overriding:
+->in inheritance, parent class constructors are called first; super is implicitly there in every subclass
+->parametrized constructor in parent class is called using "super(xyz)"
+->super comes even before than this, baap sabse pehle, but then this has to be first line(???)
+->static members are members of class not object, static wali cheezein inherit nahi hongi. Accessible but
+  not automatically inherited.
+->reference variable accesses
+->new Classname()."static variable"
+->static methods in the child class arent overwritten because they arent inherited
+->Upcasting
+--Parent p=new Child();//correct
+--child c=new parent();//incorrect
+--child method is prioritized due to overriding in Upcasting
+--data member is not overriden, method is.
+-benefits:
+>string thread
+@override: checks if overriding is done nicely
+-wrapper classes-
+arrays-
+--int [][][]x,y,z;//all are 3D now.
+--x.length
+--autoboxing.
+--cloning
+--ever class wihtout extends inherits Object class
+--clone class: cloned objects copy everything including ref id
+--covariance
+-->Exception Handling
+if error arises, this handles.
+--put code in secure block(try block)
+--if exception is encountered, handles it, and moves on.
+T h r o w a b l e
+^           ^
+|           |
+Exception  Error
+^
+|
+Arithmetic... etc
+eg:
+try{
+int a=10;
+int b=0;
+div=a/b;//Arithmetic exception object created to throwable
+sop hello;//wont work bcoz exception aate hi catch pe jata hai.
+}
+catch(Arithmetic x){//or make parent exception handle
+SOP(...message except fpr hash code of object created by a.e.);
+}//make multiple catch blocks, but no two same problem handlig exceptions
+ek finally() block hota hai jo hamesha chalta hai.
+try-finally is allowed.
+tostring()-has hash code of this, returns string; sop ref variable calls refvariable.tostring(); exception class object prints message and overrides tostring.
+-> x.equals();
+if method has probability of throwing exception
+eg:
+meth()throws exception{
+..
+...
+....
+}
+class balanceless extends Exception{
+if (bal<100)
+{
+
+}
+}
+-->parent class
