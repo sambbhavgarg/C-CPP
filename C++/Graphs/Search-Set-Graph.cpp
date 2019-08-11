@@ -52,6 +52,8 @@ int main(){
   searchEdge(graph, 3,2);
   searchEdge(graph, 4,1);
   searchEdge(graph, 2,4);
+  searchEdge(graph, 2,4);
+  
 
 
 }
