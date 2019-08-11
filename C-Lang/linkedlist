@@ -1,0 +1,141 @@
+#include<stdio.h>
+
+typedef struct node sn;
+
+sn 
+{
+ int data;
+ sn *nxt;
+};
+
+
+void insertbeg(int d)
+{
+ sn *new;
+ new=(sn)malloc(sizeof(sn));
+ new->data=d;
+ if(head==NULL)
+ {
+  head=new
+  new->nxt=NULL;
+ }
+ else
+ {
+  new->next=head;
+  head=new;
+ }
+}
+
+//500061349@stu.upes.ac.in
+void insertend(int d)
+{ 
+ sn *new;
+ new=(sn)malloc(sizeof(sn));
+ new->data=d;
+ new->nxt=NULL;
+ if(head==NULL)
+  head=new;
+  else
+  { 
+   sn *temp=head;
+   while(temp->next!=NULL)
+   {
+    temp=temp->nxt;
+   }
+   temp->nxt=new;
+  }
+}
+
+
+void insertmidbef()
+{
+sn *temp; sn new;//input new ka data=25
+ while(temp->nxt->data!=30)
+ {
+  temp=temp->next;
+ }
+ new->nxt=temp->nxt;
+ temp->nxt=new;
+}
+
+
+void insertmidafter()
+{
+ sn *temp; sn new;//input new ka data=25
+ while(temp->data!=20)
+ {
+  temp=temp->next;
+ }
+ new->nxt=temp->nxt;
+ temp->next=new;
+}
+
+//two codes above this sentence are only to insert in between. cant append.
+
+//traversing in a linked list
+
+
+void traverse()
+{
+ sn *temp=head;
+ int count=0;
+ while(temp!=NULL)//temp attains a null value by the end of the last iteration. hence temp->nxt is similar to temp for the last iteration.
+ {
+  printf("%d",temp->data);
+  temp=temp->next;
+ }
+}
+
+//write search code
+
+//delete
+
+
+void delbeg()
+{sn *temp;
+ if(head==NULL)
+ printf("LL empty");
+ else
+  {
+   temp=head;
+   head=head->next;
+   free(temp);
+  }
+ }
+
+
+void delend()//wont work for single node LL without the else if fn
+{ sn *temp=head;
+ if(head==NULL)
+ printf("LL empty");
+ else if(head->nxt==NULL)
+ {
+  free(head);
+  head=NULL;
+ else
+ {
+  while(temp->nxt->nxt!=NULL)
+  {
+  temp=temp->nxt;
+  }
+  free(temp->nxt);
+  temp->nxt=NULL;
+ }
+}
+
+void delete_mid()
+{
+ sn *temp,*temp2;
+ while(temp->nxt->data!=30)
+ {
+  temp=temp->nxt;
+ }
+ temp2=temp->nxt;
+ temp->nxt=temp2->nxt;
+ free(temp2);
+ //temp->nxt=temp->nxt->nxt;
+ //^cant do this without temp2 cuz beech wala will be lost
+}
+int main()
+{
+}

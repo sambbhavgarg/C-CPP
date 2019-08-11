@@ -1,0 +1,13 @@
+//all values in a recursive function are put in a stack and executed/popped in a LIFO manner.
+the way to write arithmetic expression is knows as a notation
+an arithmetic expresson can be written 
+//three types f notations are there
+1.infix notation: 
+2.prefix/polish notation: operations are written before operands(+ab,-ab)
+3.postfix/reversed polish notation: operator is postfixed to the operands(ab+,ab-)
+eg: 
+a(bc*(def^/)g*-)h*+
+*-a/bc-*def
+//evaluating postfix by stack(notebook)
+
+

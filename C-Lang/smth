@@ -1,0 +1,22 @@
+//passing arrays to functions
+types of passing arrays to functions
+int fun(int ar[10])//expansive
+{}
+int fun(int ar[])
+{}
+int fun(int *ar)
+{}
+##
+main()//changes made in function in which array is used reflects changes in main, always called by reference by default
+{
+int arr[10];
+fun(ar[10]);// passing a value stored at 10th index of array ar
+fun(&ar[10]);
+}
+##
+var=(type cast)malloc(size in bytes);//void * is default base address/value of malloc,
+
+int *p;//error: int p;
+p=(int *)malloc(sizeof(int)*n);
+p[0]=24;
+p[1]=25;

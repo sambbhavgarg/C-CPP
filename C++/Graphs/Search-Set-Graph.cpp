@@ -31,7 +31,7 @@ void searchEdge(Graph * graph, int src, int dest){
   auto itr = graph->adjList[src].find(dest);
   if(itr == graph.adjList[src].end())
     cout<<"Edge from "<<src<<"to "<<dest<<" not found"<<endl;
-  else
+  els
     cout<<"Edge from "<<src<<"to "<<dest<<" found"<<endl;
 }
 

@@ -1,0 +1,88 @@
+/*to find average of all elements in array using functions
+#include<stdio.h>
+float avg(int *);// can be int a[], int arr[], int *a too; flexibility, pass by reference 
+int main()
+{
+ int ar[10],i;
+
+  printf("Enter 10 values: ");
+  for(i=0;i<10;i++)
+  {
+   scanf("%d",&ar[i]);
+  }
+printf("Average is: %f\n", avg(ar));
+return 0;
+}
+float avg(int arr[10])//can be ar too
+{  float av=0.0,sum=0.0;
+   int i;
+   for(i=0;i<10;i++)
+{ 
+sum+=arr[i];
+}
+av=sum/10;
+return av;
+}
+
+
+
+//count positive values in an integer array
+*/
+cf//passing arrays to functions
+types of passing arrays to functions
+int fun(int ar[10])//expansive
+{}
+int fun(int ar[])
+{}
+int fun(int *ar)
+{}
+##
+main()//changes made in function in which array is used reflects changes in main, always called by reference by default
+{ 
+int arr[10];
+fun(ar[10]);// passing a value stored at 10th index of array ar
+fun(&ar[10]);
+}
+##
+var=(type cast)malloc(size in bytes);//void * is default base address/value of malloc, 
+ 
+int *p;//error: int p;
+p=(int *)malloc(sizeof(int)*n);
+p[0]=24;
+p[1]=25;
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+int counter(int *, int);
+int main()
+{ int *ar,c,n;
+//int ar[];
+
+printf("enter number of elements to be checked:  ");
+scanf("%d",&n);
+c=counter(ar,n);
+ printf("number of positive values: %d",c);
+return 0;
+}
+
+int counter(int *a,int n)
+{
+ int i,count=0;
+a=(int *)malloc(sizeof(int)*n);
+printf("Enter positive and negative values: ");
+for(i=0;i<n;i++)
+{
+ scanf("%d",a+i);
+}
+
+ for(i=0;i<n;i++)
+ {
+if(*(a+i)>0)
+  count++;
+}
+ return count;
+}
+
+
