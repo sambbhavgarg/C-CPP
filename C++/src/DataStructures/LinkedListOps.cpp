@@ -210,12 +210,47 @@ bool isRecursivePalindrome(Node ** left, Node * right){
   *left = (*left)->next;
   return isp1;
 }
+//Time Complexity: O(n)
+//Auxiliary Space: O(n) if Function Call Stack size is considered, otherwise O(1).
 
 bool isPalindromeDriver(Node * head){
   isRecursivePalindrome(&head, head);
 }
 
+void lisToSetSorted(Node * head){
+  Node * current = head;
+  Node * next_next;
+  if(current==NULL){
+    return;
+  }
+  while(current->next != NULL){
+    if(current->data == current->next->data){
+      next_next = current->next->next;
+      free(current->next);
+      current->next = next_next;
+    }
+    else{
+      current = current->next;
+    }
+  }
+}
 
+void lisToSetSortedRecursive(Node * head){
+  Node * to_free;
+  if(head == NULL)
+    return;
+  if(head->next != NULL){
+    if(head->data == head->next->data){
+      to_free = head->next;
+      head->next = head->next->next;
+      free(to_free);
+      lisToSetUnsorted(head);//keep deleting from head until deletion
+    }
+    else{
+      lisToSetUnsorted(head->next);//move ahead if no deletion
+    }
+  }
+}
 
 int main(){
   // cout<<"test";
@@ -230,6 +265,9 @@ int main(){
   // insertAfter(head->next->next->next, 78);
   // cout<<"test";
   // cout<<"Created Linked list is: ";
+  printList(head);
+  lisToSetSortedRecursive(head);
+
   printList(head);
   // int count = getCountRecursively(head);
   // cout<<"\n"<<count<<"\n";

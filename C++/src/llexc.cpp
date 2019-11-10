@@ -98,7 +98,7 @@ void llist::display(){
 }
 int main(){
   llist l1;
-  int ch,d;
+  int ch, d;
   do{
     cout<<"1. Insert at beginning, 2. Insert at end, 3. Delete at beginning , 4. Delete at end, 5. Display, 6. Exit\n";
     cin>>ch;
