@@ -1,18 +1,20 @@
 #include<iostream>
 #include<unordered_set>
+#include<stack>
 using namespace std;
 
 class Node{
 public:
+  // int data;
   int data;
   Node * next;
 };
 
-void push(Node ** head_ref, int new_data){
+void push(Node ** head_ref, char new_data){
   Node * temp = new Node();
   temp->data = new_data;
-  temp->next = (*head_ref);
-  (*head_ref) = temp;
+  temp->next = *head_ref;
+  *head_ref = temp;
 }
 
 void insertAfter(Node * prev_node, int new_data){
@@ -45,6 +47,7 @@ void printList(Node * start){
     cout<<" "<<start->data;
     start = start->next;
   }
+  cout<<endl;
 }
 
 int getCount(Node * head){
@@ -155,28 +158,105 @@ void midElement(Node * head){
 //   return false;
 // }
 
+int detectLoop(Node * head){
+  Node * slow_ptr = head, * fast_ptr = head;
+
+  // while (slow_p && fast_p && fast_p->next) { why confuse me bro?
+  while(1){
+    slow_ptr = slow_ptr->next;
+    fast_ptr = fast_ptr->next->next;
+    if(slow_ptr == fast_ptr){
+      cout<<"Found Loop";
+      return 1;
+    }
+  }
+  return 0;
+}
+
+bool isPalin(Node * head){
+  Node * temp = head;
+  int i;
+  stack<int> s;
+  while(temp != NULL){
+    s.push(temp->data);
+    temp = temp->next;
+  }
+  while(head != NULL){
+    i = s.top(); s.pop();
+    if(head->data != i)
+      return false;
+    head = head->next;
+  }
+  return true;
+}
+
+bool isRecursivePalindrome(Node ** left, Node * right){
+  if(right == NULL)
+    return true;
+  bool isp = isRecursivePalindrome(left, right->next);
+  /*
+  Recursively go to end of list using isRecursivePalindrome(left, right->next)
+  Check if right = null
+  if right is null, isp becomes true and skips the first if (isp == false)
+  check the data for both pointers.
+  if theyre the same, move left ptr forward and return true(isp1)
+  if theyre not, move left ptr ahead and return isp1 as false to isRecursivePalindrome(left, right->next)
+  isp comes out to be false in this case and returns false for all upcoming outfolds.
+
+  */
+  if(isp == false)
+    return false;
+  bool isp1 = (right->data == (*left)->data);
+  *left = (*left)->next;
+  return isp1;
+}
+
+bool isPalindromeDriver(Node * head){
+  isRecursivePalindrome(&head, head);
+}
+
+
+
 int main(){
   // cout<<"test";
   Node * head = NULL;
   append(&head, 6);
   push(&head, 7);
-  push(&head, 1);
-  push(&head, 5);
-  append(&head, 4);
   insertAfter(head->next, 8);
-  insertAfter(head->next->next->next, 78);
-  // cout<<"test";
-  cout<<"Created Linked list is: ";
-  printList(head);
-  int count = getCountRecursively(head);
-  cout<<"\n"<<count<<"\n";
-  count = search(head, 1);
-  cout<<"78 appeared "<<count<<" number of times\n";
-  nThFromLast(head, 2);
-  midElement(head);
-  // head->next->next->next->next = head;
+  append(&head, 8);
+  append(&head, 6);
+  append(&head, 7);
 
+  // insertAfter(head->next->next->next, 78);
+  // cout<<"test";
+  // cout<<"Created Linked list is: ";
+  printList(head);
+  // int count = getCountRecursively(head);
+  // cout<<"\n"<<count<<"\n";
+  // count = search(head, 1);
+  // cout<<"78 appeared "<<count<<" number of times\n";
+  // nThFromLast(head, 2);
+  // midElement(head);
+  // int result = isPalin(head);
+  // if(result)
+  //   cout<<"Palindrome"<<endl;
+  // else
+  //   cout<<"Not Palindrome"<<endl;
+  // head->next->next->next->next = head;
+  //
   // if(detectLoop(head))
   //   cout<<"Looped!";
-  return 0;
+
+
+  // Node * head = NULL;
+  // char str[] = "RacecaR";
+  // int i;
+  //
+  // for(i=0; str[i] != '\0'; i++){
+  //   push(&head, str[i]);
+  // }
+  // printList(head);
+
+  // isPalindromeDriver(head) ? cout<<"Palindrome"<<endl : cout<<"Not Palindrome"<<endl;
+  // return 0;
 }
