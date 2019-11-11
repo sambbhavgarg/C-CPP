@@ -1,9 +1,9 @@
-#include <iostream>
+#include <stdio.h>
 #include <math.h>
 #include <time.h>
 #include <GL/glut.h>
 
-using namespace std;
+// using namespace std;
 
 void delay(float ms){
     clock_t goal = ms + clock();
@@ -54,7 +54,8 @@ void world(){
     glColor3f(1,0,0);
     glBegin(GL_LINE_LOOP);
         glVertex2i(150,100);
-        glVertex2i(300,300);
+        glVertex2i(150,300);
+        glVertex2i(450,300);
         glVertex2i(450,100);
     glEnd();
     glFlush();
@@ -65,7 +66,7 @@ int main(int argc, char** argv){
     glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
     glutInitWindowSize(640,480);
     glutInitWindowPosition(200,200);
-    glutCreateWindow("Many Amaze Very GL WOW");
+    glutCreateWindow("Boundary Fill Algorithm");
     glutDisplayFunc(world);
     glutMouseFunc(mouse);
     init();
