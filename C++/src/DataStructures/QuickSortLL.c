@@ -7,13 +7,13 @@ public:
     Node * next;
 };
 
-Node * getTail(Node * cur){
+Node * getTail(Node * cur){ // puts a pointer at the end of the LinkedList
   while(cur != NULL && cur->next != NULL)
     cur = cur->next;
   return cur;
 }
 
-Node * partition(Node *head, Node * end, Node ** presentHead, Node ** presentEnd){
+Node * partition(Node * head, Node * end, Node ** presentHead, Node ** presentEnd){ //
   Node *pivot = end;
   Node *prev = NULL, *cur = head, *tail = pivot;
   while(cur != pivot){

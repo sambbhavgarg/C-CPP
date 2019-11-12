@@ -171,7 +171,7 @@ int detectLoop(Node * head){
     }
   }
   return 0;
-}
+}// what if loop is so big that it takes a lot of time for both to come back.
 
 bool isPalin(Node * head){
   Node * temp = head;
@@ -202,7 +202,6 @@ bool isRecursivePalindrome(Node ** left, Node * right){
   if theyre the same, move left ptr forward and return true(isp1)
   if theyre not, move left ptr ahead and return isp1 as false to isRecursivePalindrome(left, right->next)
   isp comes out to be false in this case and returns false for all upcoming outfolds.
-
   */
   if(isp == false)
     return false;
