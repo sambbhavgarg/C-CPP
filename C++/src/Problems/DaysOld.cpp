@@ -17,9 +17,7 @@ int findLeap(int start, int end){
   return flag;
 }
 
-int checkLeapCovered(int date, int month){
-
-}
+int checkLeapCovered(int date, int month){}
 
 void createMonthHashTable(map<int, int> months){
 
@@ -39,9 +37,9 @@ void createMonthHashTable(map<int, int> months){
 
 int main(){
   int d, m, y, daysBetween = 0;
-  map<int, int> months;
-  map<int, int>::iterator i;
-  createMonthHashTable(months);
+  map<int, int> mp;
+  // map<int, int>::iterator it;
+  createMonthHashTable(mp);
   // cout<<"Enter your birthdate seperated by '-'\nExample: 02-01-1999";
   cout<<"Enter your birth year: ";
   cin>>y;
@@ -55,15 +53,15 @@ int main(){
 
   years = years*365 + daysToBeAddedForLeapYears;
 
-  it = mp.find(m);
+  auto it = mp.find(m);
   int daysInBirthMonth = it->second - d;
   for(int i = m+1; i<currentMonth; i++){
     it = mp.find(i);
     daysBetween += it->second;
   }
   daysBetween = daysBetween + daysInBirthMonth + currentDay + years;
-  if(!checkLeapCovered)
-    daysBetween -= 1;
+  // if(!checkLeapCovered())
+  //   daysBetween -= 1;
   cout<<"You are: "<<daysBetween<<" days old on "
     <<currentDay<<"/"
     <<currentMonth<<"/"
