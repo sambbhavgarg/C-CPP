@@ -9,9 +9,12 @@
 using namespace std;
 
 int findLeap(int start, int end){
+  int flag=0;
   for(int i=start; i<=end; i++){
-
+    if(((i%4 == 0) && (i%100 != 0)) || (i%400 == 0))
+      flag++;
   }
+  return flag;
 }
 
 int checkLeapCovered(int date, int month){
@@ -23,7 +26,7 @@ void createMonthHashTable(map<int, int> months){
   months.insert({1,31});
   months.insert({2,28});
   months.insert({3,31});
-  months.insert({4,30});s
+  months.insert({4,30});
   months.insert({5,31});
   months.insert({6,30});
   months.insert({7,31});
