@@ -33,7 +33,7 @@ int main()
   }
 
   for(int i=0; i<n; i++){
-    cout<< ((24 - minsLeft[i][0] - 1)*60)-(minsLeft[i][1] - 60); 
+    cout<< ((24 - minsLeft[i][0] - 1)*60)-(minsLeft[i][1] - 60);
     cout<<endl;
   }
 }

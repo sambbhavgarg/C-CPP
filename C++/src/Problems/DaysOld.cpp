@@ -54,40 +54,54 @@ int isLeap(int year){
 
 int findLeap(int start, int end){
   int flag=0;
-  for(int i=start+1; i<end; i++)
+  for(int i=start; i<end; i++)
     flag += isLeap(i);
   return flag;
 }
 
-int checkBirthLeapCovered(int birthMonth){
-  if(isLeap(currentYear)){
-    if(birthMonth>2)
-      return 0;
-    else
-      return 1;
-  }
-  return 0;
-}
-
-int checkLeapCovered(){
-  if(isLeap(currentYear)){
-    if(currentMonth>2)
-      return 1;
-    else if(currentMonth == 2){
-      if(currentDay == 29)
-        return 1;
-      return 0;
-    }
+int birthLeapToBeAdded(int birthYear){
+  if(birthYear>2){
     return 0;
   }
-  return 0;
+  else {
+    return 1;
+  }
+}
+
+int currentLeapToBeAdded(){
+  if(currentMonth>2){
+    return 1;
+  }
+  else if(currentMonth == 2){
+    if(currentDay == 29)
+      {return 1;}
+    else if(currentDay <= 28)
+      {return 0;}
+  }
+  else{
+    return 0;
+  }
+}
+
+int leapDays(int birthYear){
+  int totalLeap;
+  if(isLeap(birthYear)){
+    totalLeap = findLeap(birthYear+1, currentYear) + birthLeapToBeAdded(birthYear);
+  }
+  else{
+    totalLeap = findLeap(birthYear, currentYear);
+  }
+  if(isLeap(currentYear)){
+    totalLeap += currentLeapToBeAdded();
+  }
+  return totalLeap;
 }
 
 void createMonthHashTable(map<int, int> mp){
 }
 
 int main(){
-  int birthDay, birthMonth, birthYear;
+  int birthDay, birthMonth, birthYear,birthLeap, currentLeap;
   map<int, int> mp;
   mp.insert({1,31});
   mp.insert({2,28});
@@ -112,17 +126,20 @@ int main(){
 
   int years = currentYear - birthYear;
   years = years*365;
+  cout<<years<<endl;
 
-  int birthLeap = checkBirthLeapCovered(birthMonth);
-  int currentLeap = checkLeapCovered();
-  int addLeap = findLeap(birthYear, currentYear) + currentLeap + birthLeap;
+  int addLeap = leapDays(birthYear);
+  cout<<addLeap<<endl;
 
   if(currentDay == birthDay && currentMonth == birthMonth)
     years += addLeap;
-  else if(currentDateBefore(birthDay, birthMonth))
-    years -= daysBetweenBefore(mp, birthDay, birthMonth) + addLeap + birthLeap;
-  else
-    years += daysBetweenAfter(mp, birthDay, birthMonth) + addLeap + birthLeap;
+  else if(currentDateBefore(birthDay, birthMonth)){
+    years = years - daysBetweenBefore(mp, birthDay, birthMonth) + addLeap;
+    cout<<daysBetweenBefore(mp, birthDay, birthMonth)<<endl;}
+  else{
+    years += daysBetweenAfter(mp, birthDay, birthMonth) + addLeap;
+    cout<<daysBetweenAfter(mp, birthDay, birthMonth)<<endl;}
+
 
   cout<<"You are: "<<years<<" days old on "
     <<currentDay<<"/"
