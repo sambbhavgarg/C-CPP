@@ -9,29 +9,38 @@
 using namespace std;
 
 int daysBetweenBefore(map<int, int> mp, int birthDay, int birthMonth){
-  auto it = mp.find(currentMonth);
-  int daysBetween = 0;
-  int daysInCurrentMonth = it->second - currentDay;
-  for(int i = currentMonth+1; i<birthMonth; i++){
-    it = mp.find(i);
-    daysBetween += it->second;
+  if(currentMonth == birthMonth)
+    return abs(currentDay-birthDay);
+  else{
+    auto it = mp.find(currentMonth);
+    int daysBetween = 0;
+    int daysInCurrentMonth = it->second - currentDay;
+    for(int i = currentMonth+1; i<birthMonth; i++){
+      it = mp.find(i);
+      daysBetween += it->second;
+    }
+    daysBetween = daysBetween + daysInCurrentMonth + birthDay;
+    return daysBetween;
   }
-  daysBetween = daysBetween + daysInCurrentMonth + birthDay;
-  return daysBetween;
 }
 
 int daysBetweenAfter(map<int, int> mp, int birthDay, int birthMonth){
-  auto it = mp.find(birthMonth);
-  // cout<<it->second<<"\n";
-  int daysBetween = 0;
-  int daysInBirthMonth = it->second - birthDay;
-  for(int i = birthMonth+1; i<currentMonth; i++){
-    it = mp.find(i);
-    daysBetween += it->second;
+  if(currentMonth == birthMonth)
+    return abs(currentDay-birthDay);
+  else{
+    auto it = mp.find(birthMonth);
+    // cout<<it->second<<"\n";
+    int daysBetween = 0;
+    int daysToGoInBirthMonth = it->second - birthDay;
+    for(int i = birthMonth+1; i<currentMonth; i++){
+      it = mp.find(i);
+      daysBetween += it->second;
+    }
+    daysBetween = daysBetween + daysToGoInBirthMonth + currentDay;
+    // cout<<daysBetween;
+    return daysBetween;
   }
-  daysBetween = daysBetween + daysInBirthMonth + currentDay;
-  // cout<<daysBetween;
-  return daysBetween;
+
 }
 
 int currentDateBefore(int birthDate, int birthMonth){
@@ -73,10 +82,12 @@ int currentLeapToBeAdded(){
     return 1;
   }
   else if(currentMonth == 2){
-    if(currentDay == 29)
-      {return 1;}
-    else if(currentDay <= 28)
-      {return 0;}
+    if(currentDay == 29){
+      return 1;
+    }
+    else if(currentDay <= 28){
+      return 0;
+    }
   }
   else{
     return 0;
