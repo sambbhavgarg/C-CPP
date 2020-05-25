@@ -111,6 +111,10 @@ int leapDays(int birthYear){
 void createMonthHashTable(map<int, int> mp){
 }
 
+int getYearsOld(int birthYear){
+  return (currentYear - birthYear)*365;
+}
+
 int main(){
   int birthDay, birthMonth, birthYear,birthLeap, currentLeap;
   map<int, int> mp;
@@ -135,22 +139,19 @@ int main(){
   cout<<"Enter the day you were born: ";
   cin>>birthDay;
 
-  int years = currentYear - birthYear;
-  years = years*365;
-  cout<<years<<endl;
+  int years = getYearsOld(birthYear);
 
   int addLeap = leapDays(birthYear);
-  cout<<addLeap<<endl;
+  // cout<<addLeap<<endl;
 
   if(currentDay == birthDay && currentMonth == birthMonth)
     years += addLeap;
-  else if(currentDateBefore(birthDay, birthMonth)){
+  else if(currentDateBefore(birthDay, birthMonth))
     years = years - daysBetweenBefore(mp, birthDay, birthMonth) + addLeap;
-    cout<<daysBetweenBefore(mp, birthDay, birthMonth)<<endl;}
-  else{
+    // cout<<daysBetweenBefore(mp, birthDay, birthMonth)<<endl;}
+  else
     years += daysBetweenAfter(mp, birthDay, birthMonth) + addLeap;
-    cout<<daysBetweenAfter(mp, birthDay, birthMonth)<<endl;}
-
+    // cout<<daysBetweenAfter(mp, birthDay, birthMonth)<<endl;}
 
   cout<<"You are: "<<years<<" days old on "
     <<currentDay<<"/"
